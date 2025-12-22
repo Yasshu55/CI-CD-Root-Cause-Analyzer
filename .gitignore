@@ -1,0 +1,8 @@
+# .gitignore
+.env
+__pycache__/
+*.pyc
+# output/*.txt
+# output/*.log
+.ci-cd-env/
+ci-cd-env/

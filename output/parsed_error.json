@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "errors": [
+    {
+      "error_type": "ModuleNotFoundError",
+      "error_message": "No module named 'nonexistent_module'",
+      "error_category": "dependency",
+      "failed_step": "echo \"Starting tests...\"",
+      "exit_code": 1,
+      "stack_trace": [
+        "File \"<string>\", line 1, in <module>"
+      ],
+      "stack_frames": [
+        {
+          "file": "<string>",
+          "line_number": 1,
+          "function": null,
+          "code": null
+        }
+      ],
+      "relevant_lines": [],
+      "raw_error_block": "##[endgroup]\n[command]/usr/bin/git log -1 --format=%H\nc40e01aca40d472cdd1d132851bd6d984e2c0ffd\n##[group]Run echo \"Starting tests...\"\n\u001b[36;1mecho \"Starting tests...\"\u001b[0m\n\u001b[36;1mpython -c \"import nonexistent_module\"  # This will fail!\u001b[0m\nshell: /usr/bin/bash -e {0}\n##[endgroup]\nStarting tests...\nTraceback (most recent call last):\nFile \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'nonexistent_module'\n##[error]Process completed with exit code 1.\nPost job cleanup.\n[command]/usr/bin/git version\ngit version 2.52.0\nTemporarily overriding HOME='/home/runner/work/_temp/772383fd-c3f1-4b4c-a490-57f2ea45e04b' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory /home/runner/work/Test-repo/Test-repo\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+    }
+  ],
+  "primary_error": {
+    "error_type": "ModuleNotFoundError",
+    "error_message": "No module named 'nonexistent_module'",
+    "error_category": "dependency",
+    "failed_step": "echo \"Starting tests...\"",
+    "exit_code": 1,
+    "stack_trace": [
+      "File \"<string>\", line 1, in <module>"
+    ],
+    "stack_frames": [
+      {
+        "file": "<string>",
+        "line_number": 1,
+        "function": null,
+        "code": null
+      }
+    ],
+    "relevant_lines": [],
+    "raw_error_block": "##[endgroup]\n[command]/usr/bin/git log -1 --format=%H\nc40e01aca40d472cdd1d132851bd6d984e2c0ffd\n##[group]Run echo \"Starting tests...\"\n\u001b[36;1mecho \"Starting tests...\"\u001b[0m\n\u001b[36;1mpython -c \"import nonexistent_module\"  # This will fail!\u001b[0m\nshell: /usr/bin/bash -e {0}\n##[endgroup]\nStarting tests...\nTraceback (most recent call last):\nFile \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'nonexistent_module'\n##[error]Process completed with exit code 1.\nPost job cleanup.\n[command]/usr/bin/git version\ngit version 2.52.0\nTemporarily overriding HOME='/home/runner/work/_temp/772383fd-c3f1-4b4c-a490-57f2ea45e04b' before making global git config changes\nAdding repository directory to the temporary git global config as a safe directory\n[command]/usr/bin/git config --global --add safe.directory /home/runner/work/Test-repo/Test-repo\n[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\n[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+  },
+  "total_lines": 143,
+  "error_count": 1,
+  "summary": "ModuleNotFoundError: No module named 'nonexistent_module'"
+}

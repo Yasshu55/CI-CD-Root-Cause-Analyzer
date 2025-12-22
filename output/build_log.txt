@@ -1,0 +1,422 @@
+
+================================================================================
+📄 LOG FILE: 0_test.txt
+================================================================================
+
+﻿2025-12-22T09:38:13.8729110Z Current runner version: '2.330.0'
+2025-12-22T09:38:13.8755760Z ##[group]Runner Image Provisioner
+2025-12-22T09:38:13.8756560Z Hosted Compute Agent
+2025-12-22T09:38:13.8757274Z Version: 20251211.462
+2025-12-22T09:38:13.8757849Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+2025-12-22T09:38:13.8758550Z Build Date: 2025-12-11T16:28:49Z
+2025-12-22T09:38:13.8759255Z Worker ID: {58c1e7cc-61a8-46c6-a4a6-b42da1757aaa}
+2025-12-22T09:38:13.8759967Z ##[endgroup]
+2025-12-22T09:38:13.8760784Z ##[group]Operating System
+2025-12-22T09:38:13.8761462Z Ubuntu
+2025-12-22T09:38:13.8761905Z 24.04.3
+2025-12-22T09:38:13.8762373Z LTS
+2025-12-22T09:38:13.8762834Z ##[endgroup]
+2025-12-22T09:38:13.8763387Z ##[group]Runner Image
+2025-12-22T09:38:13.8763934Z Image: ubuntu-24.04
+2025-12-22T09:38:13.8764451Z Version: 20251215.174.1
+2025-12-22T09:38:13.8765530Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251215.174/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-22T09:38:13.8767063Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251215.174
+2025-12-22T09:38:13.8768123Z ##[endgroup]
+2025-12-22T09:38:13.8769168Z ##[group]GITHUB_TOKEN Permissions
+2025-12-22T09:38:13.8771692Z Contents: read
+2025-12-22T09:38:13.8772252Z Metadata: read
+2025-12-22T09:38:13.8772717Z Packages: read
+2025-12-22T09:38:13.8773337Z ##[endgroup]
+2025-12-22T09:38:13.8775528Z Secret source: Actions
+2025-12-22T09:38:13.8776677Z Prepare workflow directory
+2025-12-22T09:38:13.9133721Z Prepare all required actions
+2025-12-22T09:38:13.9174335Z Getting action download info
+2025-12-22T09:38:14.6765352Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-22T09:38:14.8038423Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2025-12-22T09:38:15.0156314Z Complete job name: test
+2025-12-22T09:38:15.0997158Z ##[group]Run actions/checkout@v4
+2025-12-22T09:38:15.0998455Z with:
+2025-12-22T09:38:15.0999178Z   repository: Yasshu55/Test-repo
+2025-12-22T09:38:15.1000663Z   token: ***
+2025-12-22T09:38:15.1001355Z   ssh-strict: true
+2025-12-22T09:38:15.1002051Z   ssh-user: git
+2025-12-22T09:38:15.1002777Z   persist-credentials: true
+2025-12-22T09:38:15.1003594Z   clean: true
+2025-12-22T09:38:15.1004338Z   sparse-checkout-cone-mode: true
+2025-12-22T09:38:15.1005246Z   fetch-depth: 1
+2025-12-22T09:38:15.1005974Z   fetch-tags: false
+2025-12-22T09:38:15.1006717Z   show-progress: true
+2025-12-22T09:38:15.1007481Z   lfs: false
+2025-12-22T09:38:15.1008158Z   submodules: false
+2025-12-22T09:38:15.1008917Z   set-safe-directory: true
+2025-12-22T09:38:15.1010019Z ##[endgroup]
+2025-12-22T09:38:15.2148003Z Syncing repository: Yasshu55/Test-repo
+2025-12-22T09:38:15.2150989Z ##[group]Getting Git version info
+2025-12-22T09:38:15.2152328Z Working directory is '/home/runner/work/Test-repo/Test-repo'
+2025-12-22T09:38:15.2154376Z [command]/usr/bin/git version
+2025-12-22T09:38:15.2229792Z git version 2.52.0
+2025-12-22T09:38:15.2257550Z ##[endgroup]
+2025-12-22T09:38:15.2273549Z Temporarily overriding HOME='/home/runner/work/_temp/dcb29cdc-39b4-4864-89a5-1c3b59ad82dc' before making global git config changes
+2025-12-22T09:38:15.2276336Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-22T09:38:15.2286983Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Test-repo/Test-repo
+2025-12-22T09:38:15.2329952Z Deleting the contents of '/home/runner/work/Test-repo/Test-repo'
+2025-12-22T09:38:15.2334130Z ##[group]Initializing the repository
+2025-12-22T09:38:15.2338153Z [command]/usr/bin/git init /home/runner/work/Test-repo/Test-repo
+2025-12-22T09:38:15.2467358Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-22T09:38:15.2470689Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-22T09:38:15.2473583Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-22T09:38:15.2474987Z hint: call:
+2025-12-22T09:38:15.2475974Z hint:
+2025-12-22T09:38:15.2476893Z hint: 	git config --global init.defaultBranch <name>
+2025-12-22T09:38:15.2478172Z hint:
+2025-12-22T09:38:15.2479544Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-22T09:38:15.2481626Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-22T09:38:15.2483224Z hint:
+2025-12-22T09:38:15.2483919Z hint: 	git branch -m <name>
+2025-12-22T09:38:15.2485040Z hint:
+2025-12-22T09:38:15.2486293Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-22T09:38:15.2488321Z Initialized empty Git repository in /home/runner/work/Test-repo/Test-repo/.git/
+2025-12-22T09:38:15.2491825Z [command]/usr/bin/git remote add origin https://github.com/Yasshu55/Test-repo
+2025-12-22T09:38:15.2537433Z ##[endgroup]
+2025-12-22T09:38:15.2539726Z ##[group]Disabling automatic garbage collection
+2025-12-22T09:38:15.2542100Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-22T09:38:15.2575115Z ##[endgroup]
+2025-12-22T09:38:15.2577245Z ##[group]Setting up auth
+2025-12-22T09:38:15.2583898Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-22T09:38:15.2617818Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-22T09:38:15.3034585Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-22T09:38:15.3068462Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-22T09:38:15.3302663Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-22T09:38:15.3339272Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-22T09:38:15.3579566Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-22T09:38:15.3628742Z ##[endgroup]
+2025-12-22T09:38:15.3631310Z ##[group]Fetching the repository
+2025-12-22T09:38:15.3642056Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +19a3db64f9dc18d488545b8afc9fa1d5925bbbf4:refs/remotes/origin/main
+2025-12-22T09:38:15.5714396Z From https://github.com/Yasshu55/Test-repo
+2025-12-22T09:38:15.5748457Z  * [new ref]         19a3db64f9dc18d488545b8afc9fa1d5925bbbf4 -> origin/main
+2025-12-22T09:38:15.5753542Z ##[endgroup]
+2025-12-22T09:38:15.5755600Z ##[group]Determining the checkout info
+2025-12-22T09:38:15.5757983Z ##[endgroup]
+2025-12-22T09:38:15.5759352Z [command]/usr/bin/git sparse-checkout disable
+2025-12-22T09:38:15.5808910Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-22T09:38:15.5842020Z ##[group]Checking out the ref
+2025-12-22T09:38:15.5846988Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-22T09:38:15.5901285Z Switched to a new branch 'main'
+2025-12-22T09:38:15.5903863Z branch 'main' set up to track 'origin/main'.
+2025-12-22T09:38:15.5913624Z ##[endgroup]
+2025-12-22T09:38:15.5956175Z [command]/usr/bin/git log -1 --format=%H
+2025-12-22T09:38:15.5981366Z 19a3db64f9dc18d488545b8afc9fa1d5925bbbf4
+2025-12-22T09:38:15.6287358Z ##[group]Run actions/setup-node@v4
+2025-12-22T09:38:15.6288285Z with:
+2025-12-22T09:38:15.6288900Z   node-version: 18
+2025-12-22T09:38:15.6289587Z   cache: npm
+2025-12-22T09:38:15.6290382Z   always-auth: false
+2025-12-22T09:38:15.6291106Z   check-latest: false
+2025-12-22T09:38:15.6292108Z   token: ***
+2025-12-22T09:38:15.6292757Z ##[endgroup]
+2025-12-22T09:38:15.8144364Z Attempting to download 18...
+2025-12-22T09:38:16.5201393Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+2025-12-22T09:38:16.9949340Z Extracting ...
+2025-12-22T09:38:17.0053071Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/515f577e-508a-4785-a3ad-921e2b502d6c -f /home/runner/work/_temp/f3e81eca-10bf-4076-9ccb-2ef5b4cae7fa
+2025-12-22T09:38:17.9577875Z Adding to the cache ...
+2025-12-22T09:38:21.1385289Z ##[group]Environment details
+2025-12-22T09:38:21.3821669Z node: v18.20.8
+2025-12-22T09:38:21.3826504Z npm: 10.8.2
+2025-12-22T09:38:21.3827965Z yarn: 1.22.22
+2025-12-22T09:38:21.3829631Z ##[endgroup]
+2025-12-22T09:38:21.3850799Z [command]/opt/hostedtoolcache/node/18.20.8/x64/bin/npm config get cache
+2025-12-22T09:38:21.5048536Z /home/runner/.npm
+2025-12-22T09:38:21.6415920Z Cache hit for: node-cache-Linux-x64-npm-eb1a07c673b3d38ab3914ebbda94a909aa8dbdcb4d117faa039008f3617b7535
+2025-12-22T09:38:21.9694067Z Received 722732 of 722732 (100.0%), 3.1 MBs/sec
+2025-12-22T09:38:21.9694911Z Cache Size: ~1 MB (722732 B)
+2025-12-22T09:38:21.9723952Z [command]/usr/bin/tar -xf /home/runner/work/_temp/675ea23d-4b44-4856-a772-94a9b8a15440/cache.tzst -P -C /home/runner/work/Test-repo/Test-repo --use-compress-program unzstd
+2025-12-22T09:38:21.9986340Z Cache restored successfully
+2025-12-22T09:38:21.9992907Z Cache restored from key: node-cache-Linux-x64-npm-eb1a07c673b3d38ab3914ebbda94a909aa8dbdcb4d117faa039008f3617b7535
+2025-12-22T09:38:22.0160801Z ##[group]Run npm ci
+2025-12-22T09:38:22.0161150Z [36;1mnpm ci[0m
+2025-12-22T09:38:22.0202882Z shell: /usr/bin/bash -e {0}
+2025-12-22T09:38:22.0203185Z ##[endgroup]
+2025-12-22T09:38:22.7356385Z 
+2025-12-22T09:38:22.7364611Z added 65 packages, and audited 66 packages in 638ms
+2025-12-22T09:38:22.7366148Z 
+2025-12-22T09:38:22.7366489Z 22 packages are looking for funding
+2025-12-22T09:38:22.7367036Z   run `npm fund` for details
+2025-12-22T09:38:22.7367970Z 
+2025-12-22T09:38:22.7368285Z found 0 vulnerabilities
+2025-12-22T09:38:22.7489175Z ##[group]Run npm start &
+2025-12-22T09:38:22.7489488Z [36;1mnpm start &[0m
+2025-12-22T09:38:22.7489715Z [36;1msleep 5[0m
+2025-12-22T09:38:22.7489985Z [36;1mcurl -f http://localhost:3000 || exit 1[0m
+2025-12-22T09:38:22.7599088Z shell: /usr/bin/bash -e {0}
+2025-12-22T09:38:22.7599448Z ##[endgroup]
+2025-12-22T09:38:22.8913096Z 
+2025-12-22T09:38:22.8913537Z > test-repo@1.0.0 start
+2025-12-22T09:38:22.8914017Z > node index.js
+2025-12-22T09:38:22.8914312Z 
+2025-12-22T09:38:22.9273061Z file:///home/runner/work/Test-repo/Test-repo/index.js:6
+2025-12-22T09:38:22.9273952Z     res.send('Hello there'
+2025-12-22T09:38:22.9274319Z              ^^^^^^^^^^^^^
+2025-12-22T09:38:22.9274511Z 
+2025-12-22T09:38:22.9274747Z SyntaxError: missing ) after argument list
+2025-12-22T09:38:22.9275368Z     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:152:18)
+2025-12-22T09:38:22.9276109Z     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:299:14)
+2025-12-22T09:38:22.9276827Z     at async link (node:internal/modules/esm/module_job:67:21)
+2025-12-22T09:38:22.9277121Z 
+2025-12-22T09:38:22.9277253Z Node.js v18.20.8
+2025-12-22T09:38:27.7740504Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-12-22T09:38:27.7741398Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-12-22T09:38:27.7741823Z 
+2025-12-22T09:38:27.7742499Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-12-22T09:38:27.7743114Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-12-22T09:38:27.7744198Z curl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server
+2025-12-22T09:38:27.7766487Z ##[error]Process completed with exit code 1.
+2025-12-22T09:38:27.7869559Z Post job cleanup.
+2025-12-22T09:38:27.8849576Z [command]/usr/bin/git version
+2025-12-22T09:38:27.8888770Z git version 2.52.0
+2025-12-22T09:38:27.8934059Z Temporarily overriding HOME='/home/runner/work/_temp/dce4fff0-9392-4dfa-9255-433e0e6394b3' before making global git config changes
+2025-12-22T09:38:27.8935121Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-22T09:38:27.8939590Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Test-repo/Test-repo
+2025-12-22T09:38:27.8979221Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-22T09:38:27.9015413Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-22T09:38:27.9254907Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-22T09:38:27.9277620Z http.https://github.com/.extraheader
+2025-12-22T09:38:27.9290285Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-22T09:38:27.9325317Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-22T09:38:27.9557404Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-22T09:38:27.9592896Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-22T09:38:27.9946561Z Cleaning up orphan processes
+
+
+================================================================================
+📄 LOG FILE: test/10_Post Run actions_checkout@v4.txt
+================================================================================
+
+﻿2025-12-22T09:38:27.7869548Z Post job cleanup.
+2025-12-22T09:38:27.8849533Z [command]/usr/bin/git version
+2025-12-22T09:38:27.8888738Z git version 2.52.0
+2025-12-22T09:38:27.8934041Z Temporarily overriding HOME='/home/runner/work/_temp/dce4fff0-9392-4dfa-9255-433e0e6394b3' before making global git config changes
+2025-12-22T09:38:27.8935118Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-22T09:38:27.8939582Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Test-repo/Test-repo
+2025-12-22T09:38:27.8979192Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-22T09:38:27.9015371Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-22T09:38:27.9254868Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-22T09:38:27.9277489Z http.https://github.com/.extraheader
+2025-12-22T09:38:27.9290272Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-22T09:38:27.9325298Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-22T09:38:27.9557362Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-22T09:38:27.9592868Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+
+
+================================================================================
+📄 LOG FILE: test/11_Complete job.txt
+================================================================================
+
+﻿2025-12-22T09:38:27.9946545Z Cleaning up orphan processes
+
+
+================================================================================
+📄 LOG FILE: test/1_Set up job.txt
+================================================================================
+
+﻿2025-12-22T09:38:13.8728155Z Current runner version: '2.330.0'
+2025-12-22T09:38:13.8755734Z ##[group]Runner Image Provisioner
+2025-12-22T09:38:13.8756555Z Hosted Compute Agent
+2025-12-22T09:38:13.8757269Z Version: 20251211.462
+2025-12-22T09:38:13.8757845Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+2025-12-22T09:38:13.8758546Z Build Date: 2025-12-11T16:28:49Z
+2025-12-22T09:38:13.8759251Z Worker ID: {58c1e7cc-61a8-46c6-a4a6-b42da1757aaa}
+2025-12-22T09:38:13.8759964Z ##[endgroup]
+2025-12-22T09:38:13.8760777Z ##[group]Operating System
+2025-12-22T09:38:13.8761457Z Ubuntu
+2025-12-22T09:38:13.8761901Z 24.04.3
+2025-12-22T09:38:13.8762369Z LTS
+2025-12-22T09:38:13.8762830Z ##[endgroup]
+2025-12-22T09:38:13.8763383Z ##[group]Runner Image
+2025-12-22T09:38:13.8763931Z Image: ubuntu-24.04
+2025-12-22T09:38:13.8764448Z Version: 20251215.174.1
+2025-12-22T09:38:13.8765524Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251215.174/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-22T09:38:13.8766862Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251215.174
+2025-12-22T09:38:13.8768119Z ##[endgroup]
+2025-12-22T09:38:13.8769164Z ##[group]GITHUB_TOKEN Permissions
+2025-12-22T09:38:13.8771669Z Contents: read
+2025-12-22T09:38:13.8772248Z Metadata: read
+2025-12-22T09:38:13.8772713Z Packages: read
+2025-12-22T09:38:13.8773333Z ##[endgroup]
+2025-12-22T09:38:13.8775508Z Secret source: Actions
+2025-12-22T09:38:13.8776669Z Prepare workflow directory
+2025-12-22T09:38:13.9133678Z Prepare all required actions
+2025-12-22T09:38:13.9174288Z Getting action download info
+2025-12-22T09:38:14.6765300Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-22T09:38:14.8038368Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2025-12-22T09:38:15.0156272Z Complete job name: test
+
+
+================================================================================
+📄 LOG FILE: test/2_Run actions_checkout@v4.txt
+================================================================================
+
+﻿2025-12-22T09:38:15.0997107Z ##[group]Run actions/checkout@v4
+2025-12-22T09:38:15.0998444Z with:
+2025-12-22T09:38:15.0999174Z   repository: Yasshu55/Test-repo
+2025-12-22T09:38:15.1000656Z   token: ***
+2025-12-22T09:38:15.1001351Z   ssh-strict: true
+2025-12-22T09:38:15.1002047Z   ssh-user: git
+2025-12-22T09:38:15.1002773Z   persist-credentials: true
+2025-12-22T09:38:15.1003590Z   clean: true
+2025-12-22T09:38:15.1004333Z   sparse-checkout-cone-mode: true
+2025-12-22T09:38:15.1005241Z   fetch-depth: 1
+2025-12-22T09:38:15.1005968Z   fetch-tags: false
+2025-12-22T09:38:15.1006701Z   show-progress: true
+2025-12-22T09:38:15.1007476Z   lfs: false
+2025-12-22T09:38:15.1008154Z   submodules: false
+2025-12-22T09:38:15.1008912Z   set-safe-directory: true
+2025-12-22T09:38:15.1010010Z ##[endgroup]
+2025-12-22T09:38:15.2147919Z Syncing repository: Yasshu55/Test-repo
+2025-12-22T09:38:15.2150961Z ##[group]Getting Git version info
+2025-12-22T09:38:15.2152320Z Working directory is '/home/runner/work/Test-repo/Test-repo'
+2025-12-22T09:38:15.2154260Z [command]/usr/bin/git version
+2025-12-22T09:38:15.2229730Z git version 2.52.0
+2025-12-22T09:38:15.2257526Z ##[endgroup]
+2025-12-22T09:38:15.2273520Z Temporarily overriding HOME='/home/runner/work/_temp/dcb29cdc-39b4-4864-89a5-1c3b59ad82dc' before making global git config changes
+2025-12-22T09:38:15.2276328Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-22T09:38:15.2286951Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Test-repo/Test-repo
+2025-12-22T09:38:15.2329913Z Deleting the contents of '/home/runner/work/Test-repo/Test-repo'
+2025-12-22T09:38:15.2334109Z ##[group]Initializing the repository
+2025-12-22T09:38:15.2338129Z [command]/usr/bin/git init /home/runner/work/Test-repo/Test-repo
+2025-12-22T09:38:15.2467250Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-22T09:38:15.2470655Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-22T09:38:15.2473495Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-22T09:38:15.2474981Z hint: call:
+2025-12-22T09:38:15.2475967Z hint:
+2025-12-22T09:38:15.2476887Z hint: 	git config --global init.defaultBranch <name>
+2025-12-22T09:38:15.2478157Z hint:
+2025-12-22T09:38:15.2479536Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-22T09:38:15.2481615Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-22T09:38:15.2483212Z hint:
+2025-12-22T09:38:15.2483913Z hint: 	git branch -m <name>
+2025-12-22T09:38:15.2485031Z hint:
+2025-12-22T09:38:15.2486286Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-22T09:38:15.2488315Z Initialized empty Git repository in /home/runner/work/Test-repo/Test-repo/.git/
+2025-12-22T09:38:15.2491814Z [command]/usr/bin/git remote add origin https://github.com/Yasshu55/Test-repo
+2025-12-22T09:38:15.2537397Z ##[endgroup]
+2025-12-22T09:38:15.2539649Z ##[group]Disabling automatic garbage collection
+2025-12-22T09:38:15.2542066Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-22T09:38:15.2575078Z ##[endgroup]
+2025-12-22T09:38:15.2577216Z ##[group]Setting up auth
+2025-12-22T09:38:15.2583858Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-22T09:38:15.2617771Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-22T09:38:15.3034471Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-22T09:38:15.3068403Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-22T09:38:15.3301992Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-22T09:38:15.3339208Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-22T09:38:15.3579473Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-22T09:38:15.3628657Z ##[endgroup]
+2025-12-22T09:38:15.3631273Z ##[group]Fetching the repository
+2025-12-22T09:38:15.3642016Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +19a3db64f9dc18d488545b8afc9fa1d5925bbbf4:refs/remotes/origin/main
+2025-12-22T09:38:15.5714311Z From https://github.com/Yasshu55/Test-repo
+2025-12-22T09:38:15.5748389Z  * [new ref]         19a3db64f9dc18d488545b8afc9fa1d5925bbbf4 -> origin/main
+2025-12-22T09:38:15.5753515Z ##[endgroup]
+2025-12-22T09:38:15.5755575Z ##[group]Determining the checkout info
+2025-12-22T09:38:15.5757960Z ##[endgroup]
+2025-12-22T09:38:15.5759330Z [command]/usr/bin/git sparse-checkout disable
+2025-12-22T09:38:15.5808782Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-22T09:38:15.5841982Z ##[group]Checking out the ref
+2025-12-22T09:38:15.5846960Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-22T09:38:15.5901235Z Switched to a new branch 'main'
+2025-12-22T09:38:15.5903835Z branch 'main' set up to track 'origin/main'.
+2025-12-22T09:38:15.5913599Z ##[endgroup]
+2025-12-22T09:38:15.5956136Z [command]/usr/bin/git log -1 --format=%H
+2025-12-22T09:38:15.5981328Z 19a3db64f9dc18d488545b8afc9fa1d5925bbbf4
+
+
+================================================================================
+📄 LOG FILE: test/3_Setup Node.js.txt
+================================================================================
+
+﻿2025-12-22T09:38:15.6287327Z ##[group]Run actions/setup-node@v4
+2025-12-22T09:38:15.6288280Z with:
+2025-12-22T09:38:15.6288895Z   node-version: 18
+2025-12-22T09:38:15.6289583Z   cache: npm
+2025-12-22T09:38:15.6290376Z   always-auth: false
+2025-12-22T09:38:15.6291101Z   check-latest: false
+2025-12-22T09:38:15.6292104Z   token: ***
+2025-12-22T09:38:15.6292754Z ##[endgroup]
+2025-12-22T09:38:15.8144283Z Attempting to download 18...
+2025-12-22T09:38:16.5201311Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+2025-12-22T09:38:16.9949258Z Extracting ...
+2025-12-22T09:38:17.0052957Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/515f577e-508a-4785-a3ad-921e2b502d6c -f /home/runner/work/_temp/f3e81eca-10bf-4076-9ccb-2ef5b4cae7fa
+2025-12-22T09:38:17.9577793Z Adding to the cache ...
+2025-12-22T09:38:21.1385199Z ##[group]Environment details
+2025-12-22T09:38:21.3821478Z node: v18.20.8
+2025-12-22T09:38:21.3826471Z npm: 10.8.2
+2025-12-22T09:38:21.3827921Z yarn: 1.22.22
+2025-12-22T09:38:21.3829613Z ##[endgroup]
+2025-12-22T09:38:21.3850767Z [command]/opt/hostedtoolcache/node/18.20.8/x64/bin/npm config get cache
+2025-12-22T09:38:21.5048441Z /home/runner/.npm
+2025-12-22T09:38:21.6415882Z Cache hit for: node-cache-Linux-x64-npm-eb1a07c673b3d38ab3914ebbda94a909aa8dbdcb4d117faa039008f3617b7535
+2025-12-22T09:38:21.9693988Z Received 722732 of 722732 (100.0%), 3.1 MBs/sec
+2025-12-22T09:38:21.9694886Z Cache Size: ~1 MB (722732 B)
+2025-12-22T09:38:21.9723925Z [command]/usr/bin/tar -xf /home/runner/work/_temp/675ea23d-4b44-4856-a772-94a9b8a15440/cache.tzst -P -C /home/runner/work/Test-repo/Test-repo --use-compress-program unzstd
+2025-12-22T09:38:21.9986231Z Cache restored successfully
+2025-12-22T09:38:21.9992878Z Cache restored from key: node-cache-Linux-x64-npm-eb1a07c673b3d38ab3914ebbda94a909aa8dbdcb4d117faa039008f3617b7535
+
+
+================================================================================
+📄 LOG FILE: test/4_Install dependencies.txt
+================================================================================
+
+﻿2025-12-22T09:38:22.0160766Z ##[group]Run npm ci
+2025-12-22T09:38:22.0161145Z [36;1mnpm ci[0m
+2025-12-22T09:38:22.0202863Z shell: /usr/bin/bash -e {0}
+2025-12-22T09:38:22.0203181Z ##[endgroup]
+2025-12-22T09:38:22.7356338Z 
+2025-12-22T09:38:22.7364582Z added 65 packages, and audited 66 packages in 638ms
+2025-12-22T09:38:22.7366140Z 
+2025-12-22T09:38:22.7366483Z 22 packages are looking for funding
+2025-12-22T09:38:22.7367031Z   run `npm fund` for details
+2025-12-22T09:38:22.7367954Z 
+2025-12-22T09:38:22.7368278Z found 0 vulnerabilities
+
+
+================================================================================
+📄 LOG FILE: test/5_Start application.txt
+================================================================================
+
+﻿2025-12-22T09:38:22.7489161Z ##[group]Run npm start &
+2025-12-22T09:38:22.7489485Z [36;1mnpm start &[0m
+2025-12-22T09:38:22.7489712Z [36;1msleep 5[0m
+2025-12-22T09:38:22.7489982Z [36;1mcurl -f http://localhost:3000 || exit 1[0m
+2025-12-22T09:38:22.7599073Z shell: /usr/bin/bash -e {0}
+2025-12-22T09:38:22.7599445Z ##[endgroup]
+2025-12-22T09:38:22.8913068Z 
+2025-12-22T09:38:22.8913529Z > test-repo@1.0.0 start
+2025-12-22T09:38:22.8914005Z > node index.js
+2025-12-22T09:38:22.8914306Z 
+2025-12-22T09:38:22.9273000Z file:///home/runner/work/Test-repo/Test-repo/index.js:6
+2025-12-22T09:38:22.9273928Z     res.send('Hello there'
+2025-12-22T09:38:22.9274315Z              ^^^^^^^^^^^^^
+2025-12-22T09:38:22.9274507Z 
+2025-12-22T09:38:22.9274743Z SyntaxError: missing ) after argument list
+2025-12-22T09:38:22.9275364Z     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:152:18)
+2025-12-22T09:38:22.9276106Z     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:299:14)
+2025-12-22T09:38:22.9276718Z     at async link (node:internal/modules/esm/module_job:67:21)
+2025-12-22T09:38:22.9277118Z 
+2025-12-22T09:38:22.9277250Z Node.js v18.20.8
+2025-12-22T09:38:27.7740463Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2025-12-22T09:38:27.7741392Z                                  Dload  Upload   Total   Spent    Left  Speed
+2025-12-22T09:38:27.7741817Z 
+2025-12-22T09:38:27.7742494Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-12-22T09:38:27.7743108Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2025-12-22T09:38:27.7744189Z curl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server
+2025-12-22T09:38:27.7766475Z ##[error]Process completed with exit code 1.
+
+
+================================================================================
+📄 LOG FILE: test/system.txt
+================================================================================
+
+2025-12-22T09:38:10.7990000Z Job is about to start running on the hosted runner: GitHub Actions 1000000005
+2025-12-22T09:38:10.7940000Z Requested labels: ubuntu-latest
+2025-12-22T09:38:10.7940000Z Job defined at: Yasshu55/Test-repo/.github/workflows/ci.yml@refs/heads/main
+2025-12-22T09:38:10.7940000Z Waiting for a runner to pick up this job...
+2025-12-22T09:38:10.7990000Z Job is waiting for a hosted runner to come online.

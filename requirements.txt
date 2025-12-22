@@ -1,0 +1,13 @@
+# conda activate C:\Users\ADMIN\Desktop\Upskilling\ai\CI-CD-Analyzer\ci-cd-env
+
+langchain
+PyGithub 
+python-dotenv
+requests
+pydantic
+boto3 
+langchain-aws 
+langchain-core
+tavily-python 
+langchain-community
+langgraph

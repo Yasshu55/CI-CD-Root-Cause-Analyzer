@@ -1,0 +1,68 @@
+{
+  "title": "ModuleNotFoundError: No module named 'nonexistent_module'",
+  "generated_at": "2025-12-22T13:12:56.440016",
+  "repository": "Yasshu55/Test-repo",
+  "workflow_run_id": null,
+  "error_type": "ModuleNotFoundError",
+  "error_message": "No module named 'nonexistent_module'",
+  "error_category": "missing_package",
+  "severity": "low",
+  "root_cause_summary": "The CI pipeline is attempting to import a Python module named 'nonexistent_module' which is not installed in the environment or doesn't exist. This is causing a ModuleNotFoundError during the 'Starting tests...' step.",
+  "root_cause_detailed": "The error occurs because the Python interpreter cannot find a module named 'nonexistent_module' in any of the directories listed in sys.path. This could be due to the module not being installed, a typo in the module name, or the module not being in the correct location. The error is triggered by a python -c command in the CI pipeline that attempts to import this non-existent module.",
+  "affected_files": [],
+  "affected_components": [
+    "test_setup",
+    "CI_pipeline"
+  ],
+  "fix_suggestions": [
+    {
+      "priority": 1,
+      "title": "Install the required module",
+      "description": "If 'nonexistent_module' is a real module that should be installed, add it to the project's dependencies and install it in the CI environment.",
+      "implementation_steps": [
+        "Step 1: Add 'nonexistent_module' to your requirements.txt file",
+        "Step 2: Modify your CI workflow to install requirements before running tests",
+        "Step 3: Verify the installation by running 'pip list' in the CI environment"
+      ],
+      "code_example": "- name: Install dependencies\n  run: |\n    python -m pip install --upgrade pip\n    pip install -r requirements.txt\n- name: Verify installation\n  run: pip list",
+      "confidence": 0.9,
+      "source": "Common practice for managing Python dependencies in CI/CD"
+    },
+    {
+      "priority": 2,
+      "title": "Remove or replace the nonexistent module",
+      "description": "If 'nonexistent_module' is not a real module or was included by mistake, remove it from the import statement or replace it with the correct module name.",
+      "implementation_steps": [
+        "Step 1: Locate the file containing the import statement for 'nonexistent_module'",
+        "Step 2: Remove the import statement or replace it with the correct module name",
+        "Step 3: Update any code that was using the nonexistent module"
+      ],
+      "code_example": null,
+      "confidence": 0.85,
+      "source": "Standard debugging practice for import errors"
+    },
+    {
+      "priority": 3,
+      "title": "Use a pre-built Python environment",
+      "description": "Utilize GitHub Actions' setup-python action to ensure a consistent Python environment with all necessary dependencies pre-installed.",
+      "implementation_steps": [
+        "Step 1: Modify your workflow YAML to use the setup-python action",
+        "Step 2: Specify the Python version and any additional packages",
+        "Step 3: Run your tests in this pre-configured environment"
+      ],
+      "code_example": "- uses: actions/setup-python@v2\n  with:\n    python-version: '3.x'\n    architecture: 'x64'\n- run: pip install your-required-packages",
+      "confidence": 0.8,
+      "source": "GitHub Actions best practices"
+    }
+  ],
+  "relevant_links": [
+    "https://github.com/fabric/fabric/issues/2294",
+    "https://medium.com/pythoneers/how-to-fix-modulenotfounderror-no-module-named-x-in-python-8d107de19e09",
+    "https://github.com/pypa/pip/issues/11281",
+    "https://stackoverflow.com/questions/65014768/cant-find-my-python-module-after-installing-on-github-actions",
+    "https://www.youtube.com/watch?v=INYUjYS8mm4"
+  ],
+  "research_summary": "Web research confirms that ModuleNotFoundError is commonly caused by missing or incorrectly named modules. Solutions typically involve properly installing the required modules, correcting import statements, or ensuring the correct Python environment is set up in CI/CD pipelines.",
+  "confidence_score": 0.9,
+  "analysis_duration_seconds": 15.154703
+}
