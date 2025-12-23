@@ -32,6 +32,7 @@ from src.tools.log_parser import ParsedError
 from src.agents.triage_agent import TriageResult
 from src.agents.research_agent import ResearchResult
 from src.graph.state import DebuggingBrief, FixSuggestion
+from src.utils.llm import get_llm
 
 
 load_dotenv()
@@ -209,17 +210,8 @@ class SynthesisAgent:
         print("✅ Synthesis Agent initialized!")
     
     def _create_llm(self) -> ChatBedrock:
-        """Create the Bedrock LLM client."""
-        print(f"🤖 Initializing Claude for synthesis...")
-        
-        return ChatBedrock(
-            model_id=self.model_id,
-            region_name=AWS_REGION,
-            model_kwargs={
-                "temperature": 0.2,  
-                "max_tokens": 3000,
-            }
-        )
+        print(f"Using shared Claude instance")
+        return get_llm()
     
     def _format_prompt_variables(
         self,

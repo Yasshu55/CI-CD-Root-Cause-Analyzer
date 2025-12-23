@@ -30,6 +30,7 @@ from src.tools.tavily_search import TavilySearchTool, SearchResponse
 from src.tools.code_context import CodeContextFetcher, RepoContext
 from src.tools.log_parser import ParsedError
 from src.agents.triage_agent import TriageResult
+from src.utils.llm import get_llm
 
 
 load_dotenv()
@@ -307,20 +308,8 @@ class ResearchAgent:
         ])
     
     def _create_llm(self) -> ChatBedrock:
-        """Create the Bedrock LLM client."""
-        print(f" Initializing Claude for research synthesis...")
-        
-        llm = ChatBedrock(
-            model_id=self.model_id,
-            region_name=AWS_REGION,
-            model_kwargs={
-                "temperature": 0.1, 
-                "max_tokens": 2000,
-            }
-        )
-        
-        print("Claude initialized!")
-        return llm
+        print(f"Using shared Claude instance")
+        return get_llm()
     
     def _generate_search_queries(
         self,

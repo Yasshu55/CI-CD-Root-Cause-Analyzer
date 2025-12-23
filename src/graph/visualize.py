@@ -39,7 +39,7 @@ def visualize_graph():
     output_dir = Path("output")
     output_dir.mkdir(exist_ok=True)
     
-    mermaid_path = output_dir / "workflow_supervisor_diagram.mmd"
+    mermaid_path = output_dir / "workflow_supervisor_diagram1.mmd"
     mermaid_path.write_text(mermaid_code, encoding='utf-8')
     print(f"\nSaved to: {mermaid_path}")
     
@@ -63,7 +63,7 @@ def visualize_graph():
     print("-"*40)
     
     try:
-        png_path = output_dir / "workflow_supervisor_diagram.png"
+        png_path = output_dir / "workflow_supervisor_diagram1.png"
         png_data = graph.draw_mermaid_png()
         png_path.write_bytes(png_data)
         print(f"Saved to: {png_path}")

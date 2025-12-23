@@ -34,20 +34,6 @@ class WorkflowPhase(str, Enum):
     COMPLETED = "completed"
     FAILED = "failed"
 
-
-class AgentDecision(str, Enum):
-    """
-    Possible decisions from the supervisor.
-    
-    Used for conditional routing in the graph.
-    """
-    CONTINUE_TO_TRIAGE = "continue_to_triage"
-    CONTINUE_TO_RESEARCH = "continue_to_research"
-    CONTINUE_TO_SYNTHESIS = "continue_to_synthesis"
-    FINISH = "finish"
-    ABORT = "abort"
-
-
 # DEBUGGING BRIEF MODEL
 
 class FixSuggestion(BaseModel):
@@ -273,9 +259,9 @@ class GraphState(BaseModel):
         default=WorkflowPhase.INITIALIZED,
         description="Current phase of the workflow"
     )
-    next_action: Optional[AgentDecision] = Field(
+    next_action: Optional[str] = Field(
         default=None,
-        description="What the supervisor decided to do next"
+        description="What the supervisor decided to do next (agent name or FINISH)"
     )
     
     # ── Logging & Debugging 

@@ -1,4 +1,4 @@
-# conda activate C:\Users\ADMIN\Desktop\Upskilling\ai\CI-CD-Analyzer\ci-cd-env
+# conda activate C:\Users\ADMIN\Desktop\Upskilling\ai\CI-CD-Root-Cause-Analyzer\ci-cd-env
 
 langchain
 PyGithub 

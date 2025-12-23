@@ -28,6 +28,7 @@ from pathlib import Path
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from src.tools.log_parser import ParsedError, LogParseResult, ErrorCategory
+from src.utils.llm import get_llm
 
 load_dotenv()
 
@@ -186,25 +187,8 @@ class TriageAgent:
         self.prompt = self._create_prompt()
     
     def _create_llm(self) -> ChatBedrock:
-        if not os.getenv("AWS_ACCESS_KEY_ID"):
-            raise ValueError(
-                "AWS_ACCESS_KEY_ID not found in environment.\n"
-                "Please set up your AWS credentials in .env file."
-            )
-        print(f"Initializing Claude via Bedrock ({self.model_id}")
-        
-        llm = ChatBedrock(
-            model_id=self.model_id,
-            provider="anthropic",
-            region_name=AWS_REGION,
-            model_kwargs={
-                "temperature": 0.1,
-                "max_tokens": 2000,
-            }
-        )
-        
-        print("Claude initialized successfully!")
-        return llm
+        print(f"Using shared Claude instance")
+        return get_llm()
     
     def _create_prompt(self) -> ChatPromptTemplate:
         
