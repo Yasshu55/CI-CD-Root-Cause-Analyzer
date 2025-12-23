@@ -23,20 +23,16 @@ from pydantic import BaseModel, Field
 from langchain_aws import ChatBedrock
 from langchain_core.prompts import ChatPromptTemplate
 
-import sys
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from ..tools.tavily_search import TavilySearchTool, SearchResponse
+from ..tools.code_context import CodeContextFetcher, RepoContext
+from ..tools.log_parser import ParsedError
+from .triage_agent import TriageResult
 
-from src.tools.tavily_search import TavilySearchTool, SearchResponse
-from src.tools.code_context import CodeContextFetcher, RepoContext
-from src.tools.log_parser import ParsedError
-from src.agents.triage_agent import TriageResult
-from src.utils.llm import get_llm
-
-
-load_dotenv()
-
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
-BEDROCK_MODEL_ID = "anthropic.claude-3-5-sonnet-20240620-v1:0"
+from ..utils.llm import get_llm
+from ..utils.shared_utils import parse_llm_json_response
+from ..prompts import RESEARCH_SYNTHESIS_PROMPT
+from ..constants import BEDROCK_MODEL_ID
+from ..utils.shared_utils import extract_json_from_text
 
 
 class SolutionCandidate(BaseModel):
@@ -182,64 +178,6 @@ def clean_json_string(text: str) -> str:
     text = re.sub(r',\s*]', ']', text)
     
     return text
-
-
-def extract_json_from_text(text: str) -> Optional[dict]:
-    """
-    Extract JSON object from text that might contain other content.
-    
-    Uses multiple strategies:
-    1. Direct parsing
-    2. Clean and parse
-    3. Find JSON in text using regex
-    4. Find JSON by bracket matching
-    """
-    # Strategy 1: Direct parsing
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        pass
-    
-    # Strategy 2: Clean and parse
-    try:
-        cleaned = clean_json_string(text)
-        return json.loads(cleaned)
-    except json.JSONDecodeError:
-        pass
-    
-    # Strategy 3: Find JSON object using regex
-    try:
-        match = re.search(r'\{.*\}', text, re.DOTALL)
-        if match:
-            json_str = match.group()
-            cleaned = clean_json_string(json_str)
-            return json.loads(cleaned)
-    except (json.JSONDecodeError, AttributeError):
-        pass
-    
-    try:
-        start_idx = text.find('{')
-        if start_idx != -1:
-            bracket_count = 0
-            end_idx = start_idx
-            
-            for i, char in enumerate(text[start_idx:], start_idx):
-                if char == '{':
-                    bracket_count += 1
-                elif char == '}':
-                    bracket_count -= 1
-                    if bracket_count == 0:
-                        end_idx = i + 1
-                        break
-            
-            if end_idx > start_idx:
-                json_str = text[start_idx:end_idx]
-                cleaned = clean_json_string(json_str)
-                return json.loads(cleaned)
-    except (json.JSONDecodeError, ValueError):
-        pass
-    
-    return None
 
 
 def parse_llm_json_response(response_text: str) -> dict:
@@ -538,60 +476,3 @@ class ResearchAgent:
         return result
 
 
-#### testing only 
-if __name__ == "__main__":
-    """Test the Research Agent with outputs from Phase 2 and 3."""
-    
-    print("\n" + "="*60)
-    print("🔧 CI/CD Root Cause Analyzer - Research Agent")
-    print("="*60 + "\n")
-    
-    # Load parsed error from Phase 2
-    parsed_error_path = Path("output/parsed_error.json")
-    triage_result_path = Path("output/triage_result.json")
-    
-    if not parsed_error_path.exists():
-        print(f"❌ Parsed error file not found: {parsed_error_path}")
-        print("   Please run log_parser.py first (Phase 2)")
-        exit(1)
-    
-    if not triage_result_path.exists():
-        print(f"❌ Triage result file not found: {triage_result_path}")
-        print("   Please run triage_agent.py first (Phase 3)")
-        exit(1)
-    
-    print(" Loading inputs...")
-    
-    with open(parsed_error_path) as f:
-        parsed_data = json.load(f)
-    
-    with open(triage_result_path) as f:
-        triage_data = json.load(f)
-    
-    # Convert to Pydantic models
-    parsed_error = ParsedError(**parsed_data["primary_error"])
-    triage_result = TriageResult(**triage_data)
-    
-    print(f"   Loaded error: {parsed_error.error_type}")
-    print(f"   Loaded triage: {triage_result.root_cause[:50]}...")
-    
-    REPO_NAME = "Yasshu55/Test-repo"  
-    
-    try:
-        agent = ResearchAgent(repo_name=REPO_NAME)
-        result = agent.research(triage_result, parsed_error)
-        
-        output_path = Path("output/research_result.json")
-        output_path.write_text(result.model_dump_json(indent=2))
-        
-        print("\n" + "="*60)
-        print("   Phase 4 Complete! Research saved.")
-        print("="*60)
-        print(f"\n Results saved to: {output_path}")
-        
-    except ValueError as e:
-        print(f"\n❌ Configuration Error: {e}")
-    except Exception as e:
-        print(f"\n❌ Error during research: {e}")
-        import traceback
-        traceback.print_exc()

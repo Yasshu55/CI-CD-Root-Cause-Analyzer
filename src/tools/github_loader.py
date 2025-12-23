@@ -194,23 +194,7 @@ def fetch_failed_build_logs(repo_name : str) -> Optional[Path]:
         print("   No analysis needed.")
         return None
     
-if __name__ == "__main__":
-    
-    TEST_REPO = "Yasshu55/Test-repo"
-    
-    try:
-        result = fetch_failed_build_logs(TEST_REPO)
-        
-        if result:
-            print(f"🎉 Success! Check the log file at: {result}")
-        else:
-            print("ℹ️  No failures to analyze. Try a repo with failed CI runs.")
-            
-    except ValueError as e:
-        print(f"\n{e}")
-    except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
-        raise
+
 
     
     

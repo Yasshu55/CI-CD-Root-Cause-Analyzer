@@ -137,30 +137,3 @@ class TavilySearchTool:
         
         return all_responses
 
-if __name__ == "__main__":
-    
-    print("🔧 CI/CD Root Cause Analyzer - Tavily Search Test")
-
-    test_query = "Python ModuleNotFoundError no module named fix"
-    
-    try:
-        tool = TavilySearchTool()
-        response = tool.search(test_query, max_results=3)
-        
-        print(f"\n Search Results for: \"{test_query}\"")
-        
-        if response.answer:
-            print(f"\n AI Summary:\n{response.answer}\n")
-        
-        for i, result in enumerate(response.results, 1):
-            print(f"\n{i}. {result.title}")
-            print(f"   URL: {result.url}")
-            print(f"   Score: {result.score:.2f}")
-            print(f"   Content: {result.content[:200]}...")
-        
-        print("Tavily Search Test Complete!")
-    except ValueError as e:
-        print(f"\n{e}")
-    except Exception as e:
-        print(f"\nError: {e}")
-        raise

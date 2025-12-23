@@ -10,30 +10,19 @@ This agent analyzes parsed CI/CD errors and provides:
 Uses Claude via AWS Bedrock for intelligent analysis.
 """
 
-import os
 import json
 from typing import Optional
 from enum import Enum
-
-from dotenv import load_dotenv
-from pydantic import BaseModel, Field
-
-from langchain_aws import ChatBedrock
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.messages import HumanMessage, SystemMessage
-
-import sys
 from pathlib import Path
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from src.tools.log_parser import ParsedError, LogParseResult, ErrorCategory
-from src.utils.llm import get_llm
+from pydantic import BaseModel, Field
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_aws import ChatBedrock
 
-load_dotenv()
-
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
-BEDROCK_MODEL_ID = "us.anthropic.claude-3-5-sonnet-20241022-v2:0"
+from ..tools.log_parser import ParsedError, ErrorCategory
+from ..utils.llm import get_llm
+from ..prompts import TRIAGE_SYSTEM_PROMPT, TRIAGE_USER_PROMPT
+from ..constants import BEDROCK_MODEL_ID
 
 
 
@@ -100,69 +89,7 @@ class TriageResult(BaseModel):
         description="How confident the AI is in this analysis (0-1)"
     )
     
-TRIAGE_SYSTEM_PROMPT = """You are an expert CI/CD debugging assistant. Your job is to analyze build failures and provide actionable insights.
 
-You have deep expertise in:
-- Python, Node.js, and common programming languages
-- Package managers (pip, npm, yarn, poetry)
-- CI/CD systems (GitHub Actions, Jenkins, GitLab CI)
-- Common error patterns and their solutions
-
-When analyzing an error, you should:
-1. Identify the root cause (not just the symptom)
-2. Assess the severity based on impact
-3. Provide specific, actionable fix suggestions
-4. Determine if web research would help find solutions
-
-Be concise but thorough. Focus on actionable insights."""
-
-
-TRIAGE_USER_PROMPT = """Analyze this CI/CD build failure and provide a structured diagnosis.
-
-## Error Information
-
-**Error Type:** {error_type}
-**Error Message:** {error_message}
-**Error Category:** {error_category}
-**Failed Step:** {failed_step}
-**Exit Code:** {exit_code}
-
-## Stack Trace
-{stack_trace}
-
-## Raw Error Context
-{raw_error_block}
-
-## Your Task
-
-Provide a JSON response with the following structure:
-{{
-    "severity": "critical|high|medium|low",
-    "severity_reasoning": "Why this severity level",
-    "root_cause": "One sentence root cause",
-    "root_cause_detailed": "Detailed explanation",
-    "error_category_refined": "specific_category",
-    "affected_files": ["file1.py", "file2.py"],
-    "affected_components": ["component1", "component2"],
-    "immediate_suggestions": [
-        "First suggestion",
-        "Second suggestion",
-        "Third suggestion"
-    ],
-    "requires_research": true/false,
-    "research_queries": ["search query 1", "search query 2"],
-    "confidence_score": 0.0-1.0
-}}
-
-For error_category_refined, use one of:
-- missing_package, version_conflict, incompatible_dependency
-- syntax_error, type_error, import_error
-- assertion_failure, test_timeout, fixture_error
-- missing_env_var, invalid_config, missing_file
-- network_error, permission_denied, resource_limit
-- unknown
-
-Respond ONLY with the JSON object, no additional text."""
 
 
 class TriageAgent: 
@@ -276,48 +203,4 @@ class TriageAgent:
         return result
 
 
-if __name__ == "__main__":
-    """
-    Test the Triage Agent with the parsed error from Phase 2.
-    """
-    
-    print("\n" + "="*60)
-    print("CI/CD Root Cause Analyzer - Triage Agent")
-    print("="*60 + "\n")
-    
-    parsed_error_path = Path("output/parsed_error.json")
-    
-    if not parsed_error_path.exists():
-        print(f"Parsed error file not found: {parsed_error_path}")
-        print("Please run log_parser.py first (Phase 2)")
-        exit(1)
-    
-    print(f"Loading parsed error from: {parsed_error_path}")
-    
-    with open(parsed_error_path) as f:
-        data = json.load(f)
-    
-    if not data.get("primary_error"):
-        print("No primary error in parsed data")
-        exit(1)
 
-    primary_error_data = data["primary_error"]
-    parsed_error = ParsedError(**primary_error_data)
-    
-    print(f"✅ Loaded error: {parsed_error.error_type}")
-    
-    try:
-        agent = TriageAgent()
-        result = agent.analyze(parsed_error)
-        
-        # Save the result
-        output_path = Path("output/triage_result.json")
-        output_path.write_text(result.model_dump_json(indent=2))
-        
-        print("Phase 3 Complete! Triage analysis saved.")
-        print(f"\n Results saved to: {output_path}")
-        
-    except Exception as e:
-        print("\n❌ Error during triage:")
-        print(e)
-        raise
