@@ -11,3 +11,4 @@ langchain-core
 tavily-python 
 langchain-community
 langgraph
+streamlit
