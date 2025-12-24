@@ -26,6 +26,21 @@ Uses LangGraph Supervisor-Worker pattern:
 - Tavily API
 - PyGithub
 
+## 🚀 How to Actually Use This Thing
+
+**Local Setup** :
+1. Clone this repo
+2. Copy `.env.example` to `.env` 
+3. Fill in your secrets (GitHub token, AWS credentials, etc.) - check `.env.example` for what you need
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run it: `streamlit run app.py`
+
+**Streamlit Cloud Deployment** (For the lazy, like me):
+1. Fork this repo
+2. Deploy to Streamlit Cloud
+3. Add all your `.env` variables in the Streamlit secrets section
+4. Click deploy
+
 ## Usage
 
 ```bash
